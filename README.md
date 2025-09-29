@@ -160,3 +160,95 @@ int main () {
         std::cout << "\n";
     }std::cout << "SUM"<<" = "<< SUM;
     }
+    Практика 3 урок 6 
+    Task 1
+    #include <iostream>
+#include <vector>
+using namespace std;
+int main(){
+    int kolvo;
+    int num;
+    int sum = 0;
+    cout <<"How many people want to go KFC?"<<'\n';
+    cin >> kolvo;
+    vector<int> name(kolvo);
+    for (size_t i = 0; i != kolvo; ++i){
+        cout <<"which table?"<<'\n';
+        cin>>name[i];
+    }
+    for (size_t i = 0; i != kolvo; ++i){
+        if (name[i] == name[i+1]){
+            sum = sum + 2;
+        }
+    }
+cout<<"kolvo students - "<<sum;
+}
+    Task 2
+    #include <iostream>
+using namespace std;
+int main() {
+    int N;
+    cout << "Enter the value of N: ";
+    cin >> N;
+int name[N][N];
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            if (i + j < N - 1) {
+                name[i][j] = 0;
+            } else if (i + j == N - 1) {
+                name[i][j] = 1;
+            } else {
+                name[i][j] = 2;
+            }
+        }
+    }
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            cout << name[i][j] << " ";
+        }
+        cout << endl;
+    }
+    return 0;
+}
+Task 3
+#include <iostream>
+using namespace std;
+
+int main() {
+    int N, M, W;
+    cin >> N >> M >> W;
+    char map[N][M];
+    for (int i = 0; i < N; i++)
+        for (int j = 0; j < M; j++)
+            map[i][j] = '.';
+    for (int k = 0; k < W; k++) {
+        int x, y;
+        cin >> x >> y;
+        map[x - 1][y - 1] = '*';
+    }
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < M; j++) {
+            if (map[i][j] == '.') {
+                int neighbors = 0;
+                for (int di = -1; di <= 1; di++) {
+                    for (int dj = -1; dj <= 1; dj++) {
+                        int ni = i + di, nj = j + dj;
+                        if (!(ni == i && nj == j) && ni >= 0 && ni < N && nj >= 0 && nj < M) {
+                            if (map[ni][nj] == '*') {
+                                neighbors++;
+                            }
+                        }
+                    }
+                }
+                map[i][j] = '0' + neighbors;
+            }
+        }
+    }
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < M; j++) {
+            cout << map[i][j];
+        }
+        cout << endl;
+    }
+    return 0;
+}
